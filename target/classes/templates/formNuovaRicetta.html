@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    <title>Nuova Ricetta</title>
+    <link rel="stylesheet" href="/stile.css?version=3" />
+  </head>
+  <body>
+    <div><a href="/"><img src="/Foto-Merialdo.jpg" height="50%"/></a></div>
+    <h1>Aggiungi una nuova Ricetta</h1>
+    <form th:action="@{/ricette}" method="POST" th:object="${ricetta}">
+      <div>
+        <span th:text="${messaggioErrore}">Errore</span>
+      </div>
+      <div>
+        Titolo: <span><input required type="text" th:field="${ricetta.nome}"/></span>
+      </div>
+      <div>
+        Anno: <span><input required type="text" th:field="${ricetta.descrizione}"/></span>
+      </div>
+      <div>
+        URL immagine: <span><input type="url" th:field="${ricetta.immagini}" /></span>
+      </div>
+      <h1>Ingredienti</h1>
+      <div>
+        Ingrediente 1: 
+        <span>
+        <input type="text" th:field="${ricetta.ingredienti.nome}" />
+        </span>
+        <span>
+        <input type="number" th:field="${ricetta.ingredienti.quantita}" />
+        </span>
+        <span>
+        <input type="text" th:field="${ricetta.ingredienti.unita_misura}" />
+        </span>
+      </div>
+      <div>
+        <span><button type="submit">Conferma</button></span>
+      </div>
+    </form>
+  </body>
+</html>

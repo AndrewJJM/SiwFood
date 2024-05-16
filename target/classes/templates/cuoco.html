@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Cuoco</title>
+		<link rel="stylesheet" href="/stile.css?version=2" />
+  	</head>
+  <body>
+    <div><a href="/"><img src="/Foto-Merialdo.jpg" height="50%"/></a></div>
+    <div th:if="${cuoco}">
+    	<h1 th:text="${cuoco.nome}">Nome Cuoco</h1>
+		<div>Cognome: <span th:text="${cuoco.cognome}">Cognome Cuoco</span></div>
+        <div>Anno di nascita: <span th:text="'(' + ${cuoco.dataDiNascita} + ')'">2000</span></div>
+    </div>
+    <div th:unless="${cuoco}">Non esiste</div>
+  </body>
+</html>

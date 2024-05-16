@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	
+  <head>
+	  <title>Ricette</title>
+	  <link rel="stylesheet" href="/stile.css?version=2" />
+  </head>
+  
+  <body>
+    <div><a href="/"><img src="Foto-Merialdo.jpg" height="50%"/></a></div>
+    <h1>Ricette</h1>
+    <div th:if="${ricette.isEmpty()}">Non ci sono ricette nel sistema</div>
+    <ul>
+      <li th:each="ricetta : ${ricette}">
+        <a th:href="@{'/ricette' + '/' + ${ricetta.id}}"
+           th:text="${ricetta.nome} + ' (' + ${ricetta.cuoco} + ')'">Ratatouille (Remy Therat)</a>
+      </li>
+    </ul>
+  </body> 
+
+</html>
