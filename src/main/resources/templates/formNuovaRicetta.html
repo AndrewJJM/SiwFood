@@ -20,7 +20,7 @@
       <div>
         URL immagine: <span><input type="url" th:field="${ricetta.immagini}" /></span>
       </div>
-      <h1>Ingredienti</h1>
+      <h1 th:each = "ingrediente : ${ricetta.ingredienti}">Ingredienti</h1>
       <div>
         Ingrediente 1: 
         <span>
