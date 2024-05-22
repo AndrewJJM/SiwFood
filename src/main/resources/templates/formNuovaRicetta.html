@@ -22,16 +22,7 @@
       </div>
       <h1 th:each = "ingrediente : ${ricetta.ingredienti}">Ingredienti</h1>
       <div>
-        Ingrediente 1: 
-        <span>
-        <input type="text" th:field="${ricetta.ingredienti.nome}" />
-        </span>
-        <span>
-        <input type="number" th:field="${ricetta.ingredienti.quantita}" />
-        </span>
-        <span>
-        <input type="text" th:field="${ricetta.ingredienti.unita_misura}" />
-        </span>
+      Nella prossima pagina puoi inserire gli ingredienti
       </div>
       <div>
         <span><button type="submit">Conferma</button></span>

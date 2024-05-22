@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import it.uniroma3.siw.model.Ingrediente;
 import it.uniroma3.siw.model.Ricetta;
 import it.uniroma3.siw.service.RicettaService;
 
@@ -18,7 +17,7 @@ public class RicettaController {
 	  
 	  @GetMapping("/nuovaRicetta")
 	  public String formNewRicetta(Model model) {
-		  model.addAttribute("ricetta", new Ricetta().getIngredienti().add(new Ingrediente()));
+		  model.addAttribute("ricetta", new Ricetta());
 		  return "formNuovaRicetta.html";
 	  }
 	  
@@ -32,7 +31,7 @@ public class RicettaController {
 	  @GetMapping("/ricette/{id}")
 	  public String getRicetta(@PathVariable("id") Long id, Model model) {
 		  model.addAttribute("ricetta", this.ricettaService.findById(id));
-		  return "ricette.html";
+		  return "ricetta.html";
 	  }
 	  
 	  @GetMapping("/ricette")
