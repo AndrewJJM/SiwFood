@@ -7,20 +7,20 @@
   <body>
     <div><a href="/"><img src="/Foto-Merialdo.jpg" height="50%"/></a></div>
     <h1>Aggiungi una nuova Ricetta</h1>
-    <form th:action="@{/ricette}" method="POST" th:object="${ricetta}">
+    <form th:action="@{/recipes}" method="POST" th:object="${recipe}">
       <div>
         <span th:text="${messaggioErrore}">Errore</span>
       </div>
       <div>
-        Titolo: <span><input required type="text" th:field="${ricetta.nome}"/></span>
+        Titolo: <span><input required type="text" th:field="${recipe.name}"/></span>
       </div>
       <div>
-        Anno: <span><input required type="text" th:field="${ricetta.descrizione}"/></span>
+        Procedimento: <span><input required type="text" th:field="${recipe.description}"/></span>
       </div>
       <div>
-        URL immagine: <span><input type="url" th:field="${ricetta.immagini}" /></span>
+        URL immagine: <span><input type="url" th:field="${recipe.images}" /></span>
       </div>
-      <h1 th:each = "ingrediente : ${ricetta.ingredienti}">Ingredienti</h1>
+      <h1 th:each = "ingredient : ${recipe.ingredients}">Ingredienti</h1>
       <div>
       Nella prossima pagina puoi inserire gli ingredienti
       </div>

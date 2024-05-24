@@ -10,15 +10,15 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Cuoco {
+public class Cook {
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String nome;
-    private String cognome;
+    private String name;
+    private String surname;
     
     @Column(columnDefinition = "DATE")
-    private java.time.LocalDate dataDiNascita;
+    private java.time.LocalDate dateOfBirth;
     
 	public Long getId() {
 		return id;
@@ -26,27 +26,27 @@ public class Cuoco {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getNome() {
-		return nome;
+	public String getName() {
+		return name;
 	}
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setName(String name) {
+		this.name = name;
 	}
-	public String getCognome() {
-		return cognome;
+	public String getSurname() {
+		return surname;
 	}
-	public void setCognome(String cognome) {
-		this.cognome = cognome;
+	public void setSurname(String surname) {
+		this.surname = surname;
 	}
-	public LocalDate getDataDiNascita() {
-		return dataDiNascita;
+	public LocalDate getDateOfBirth() {
+		return dateOfBirth;
 	}
-	public void setDataDiNascita(LocalDate dataDiNascita) {
-		this.dataDiNascita = dataDiNascita;
+	public void setDateOfBirth(LocalDate dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
 	}
 	@Override
 	public int hashCode() {
-		return Objects.hash(cognome, dataDiNascita);
+		return Objects.hash(surname, dateOfBirth);
 	}
 	@Override
 	public boolean equals(Object obj) {
@@ -56,7 +56,7 @@ public class Cuoco {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Cuoco other = (Cuoco) obj;
-		return Objects.equals(cognome, other.cognome) && Objects.equals(dataDiNascita, other.dataDiNascita);
+		Cook other = (Cook) obj;
+		return Objects.equals(surname, other.surname) && Objects.equals(dateOfBirth, other.dateOfBirth);
 	}
 }

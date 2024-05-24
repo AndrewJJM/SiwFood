@@ -9,11 +9,11 @@
   <body>
     <div><a href="/"><img src="/Foto-Merialdo.jpg" height="50%"/></a></div>
     <h1>Cuochi</h1>
-    <div th:if="${cuochi.isEmpty()}">Non ci sono cuochi nel sistema</div>
+    <div th:if="${cooks.isEmpty()}">Non ci sono cuochi nel sistema</div>
     <ul>
-      <li th:each="cuoco : ${cuochi}">
-        <a th:href="@{'/cuochi' + '/' + ${cuoco.id}}"
-           th:text="${cuoco.nome} + ' (' + ${cuoco.cognome} + ')'"> Carlo Cracco </a>
+      <li th:each="cook : ${cooks}">
+        <a th:href="@{'/cooks' + '/' + ${cook.id}}"
+           th:text="${cook.name} + ' (' + ${cook.surname} + ')'"> Carlo Cracco </a>
       </li>
     </ul>
   </body>

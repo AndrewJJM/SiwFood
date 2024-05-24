@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ricetta</title>
+    <link rel="stylesheet" href="/stile.css?version=2" />
+</head>
+  <body>
+    <div><a href="/"><img src="/Foto-Merialdo.jpg" height="50%"/></a></div>
+    <div th:if="${recipe}">
+    <h1 th:text="${recipe.name}">Nome Ricetta</h1>
+        <!--  <div>Cuoco: <span th:text="'(' + ${ricetta.cuoco.nome} + ')'">Remy Therat</span></div> -->
+		<div th:text= "${recipe.description}">Descrizione oaandoaiwdjawiopdjaowidjaowidj</div>
+        <span th:each="image : ${recipe.images}">
+			<img width="30%"  th:src="${image}" />
+		</span>
+    </div>
+    <div th:unless="${recipe}">Non esiste</div>
+  </body>
+</html>

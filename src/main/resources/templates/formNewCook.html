@@ -9,16 +9,16 @@
 	<body>
 		<div><a href="/"><img src="/Foto-Merialdo.jpg" height="50%"/></a></div>
 		<h1>Aggiungi un nuovo Cuoco</h1>
-		<form th:action="@{/cuochi}" method="POST" th:object="${cuoco}">
+		<form th:action="@{/cooks}" method="POST" th:object="${cook}">
 		<div> <span th:text="${messaggioErrore}">Errore</span> </div>
 		<div>
-        Nome: <span><input required type="text" th:field="${cuoco.nome}"/></span>
+        Nome: <span><input required type="text" th:field="${cook.name}"/></span>
 		</div>
       <div>
-        Cognome: <span><input required type="text" th:field="${cuoco.cognome}"/></span>
+        Cognome: <span><input required type="text" th:field="${cook.surname}"/></span>
       </div>
       <div>
-        Data di nascita: <span><input type="date" th:field="${cuoco.dataDiNascita}"/></span>
+        Data di nascita: <span><input type="date" th:field="${cook.dateOfBirth}"/></span>
       </div>
       <div>
         <span><button type="submit">Conferma</button></span>
