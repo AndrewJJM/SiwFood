@@ -12,20 +12,21 @@
 <div class="box">
 	<div class="form">
 		<h1 th:text="'Ingredienti della Ricetta ' + ${ricetta.nome}"></h1>
-		<div th:if="${ricetta.ingredienti.isEmpty()}">Non ci sono attori per questo film</div>
+		<div th:if="${ricetta.ingredienti.isEmpty()}">Non ci sono ingredienti per questa ricetta</div>
 		<ul>
-			<li th:each="actor : ${movie.actors}">
-				<span th:text="${actor.name}+' '+${actor.surname}"></span>
-				<a th:href="@{'/admin/removeActorFromMovie/'+ ${actor.id}+'/'+${movie.id}}"><button type="button"> Cancella</button></a>
+			<li th:each="ingredient : ${recipe.ingredients}">
+				<span th:text="${ingredient.name}+' '+${ingredient.quantity}+' '+${ingredient.measurement_unit}" > sarcicce 2 pezzi</span>
+				<!-- <a th:href="@{'/admin/removeActorFromMovie/'+ ${actor.id}+'/'+${movie.id}}"><button type="button"> Cancella</button></a> -->
 			</li>
 
 		</ul>
 		<div>
-			Attori che si possono aggiungere:
+			<!-- INVECE DI MOSTRARE LA LISTA, AGGIUNGERE UN MINI FORM PER AGGIUNGERE UN NUOVO INGREDIENTE -->
+			Ingredienti da aggiungere:
 			<ul>
-				<li th:each="actor : ${actorsToAdd}">
-					<span th:text="${actor.name}+' '+${actor.surname}"></span>
-					<a th:href="@{'/admin/addActorToMovie/'+ ${actor.id}+'/'+${movie.id}}"><button type="button"> Aggiungi</button></a>
+				<li th:each="ingredient : ${ingredientsToAdd}">
+					<span th:text="${ingredient.name}+' '+${ingredient.quantity}+' '+${ingredient.measurement_unit}"></span>
+					<!-- <a th:href="@{'/admin/addActorToMovie/'+ ${actor.id}+'/'+${movie.id}}"><button type="button"> Aggiungi</button></a> -->
 				</li>
 			</ul>
 		</div>
