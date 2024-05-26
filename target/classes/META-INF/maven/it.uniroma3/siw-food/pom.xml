@@ -16,6 +16,7 @@
 	<properties>
 		<java.version>17</java.version>
 	</properties>
+	
 	<!-- SE SI MODIFICANO LE DIPENDENZE, AGGIORNARE APPLICATION.PROPERTIES -->
 	<dependencies>
 		<dependency>
@@ -47,6 +48,10 @@
     		<artifactId>thymeleaf-extras-java8time</artifactId>
     		<version>3.0.4.RELEASE</version>
 		</dependency>
+		<dependency>
+        	<groupId>jakarta.validation</groupId>
+        	<artifactId>jakarta.validation-api</artifactId>
+    	</dependency>
 		<!--
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

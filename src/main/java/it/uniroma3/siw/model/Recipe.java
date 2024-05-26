@@ -12,6 +12,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "recipes")
@@ -21,6 +22,7 @@ public class Recipe {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
+    @NotBlank
     private String name;
     
     private Set<String> images;
@@ -29,6 +31,7 @@ public class Recipe {
     @JoinColumn(name="recipes_id") //per evitare la creazione di una tabella di join inutile
     private Set<Ingredient> ingredients;
     
+    @NotBlank
     @Column(length=2000)
     private String description;
     
