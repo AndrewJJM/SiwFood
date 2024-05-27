@@ -3,24 +3,30 @@
 	<head>
     <title>Nuova Ricetta</title>
     <link rel="stylesheet" href="/stile.css?version=3" />
-  </head>
+    </head>
   <body>
     <div><a href="/"><img src="/Foto-Merialdo.jpg" height="50%"/></a></div>
     <h1>Aggiungi una nuova Ricetta</h1>
     <form th:action="@{/recipes}" method="POST" th:object="${recipe}">
+    <div th:if="${#fields.hasGlobalErrors()}">
+        <p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p> 
+    </div>
+
       <div>
-        <span th:text="${messaggioErrore}">Errore</span>
+        Titolo: 
+        <span><input type="text" th:field="*{name}"/></span>
+        <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
       </div>
+      
       <div>
-        Titolo: <span><input required type="text" th:field="${recipe.name}"/></span>
+        Procedimento: 
+        <span><input type="text" th:field="*{description}"/></span>
+        <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span>
       </div>
-      <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+      
       <div>
-        Procedimento: <span><input required type="text" th:field="${recipe.description}"/></span>
-      </div>
-      <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span>
-      <div>
-        URL immagine: <span><input type="url" th:field="${recipe.images}" /></span>
+        URL immagine: 
+        <span><input type="url" th:field="${recipe.images}" /></span>
       </div>
       <h1 th:each = "ingredient : ${recipe.ingredients}">Ingredienti</h1>
       <div>
