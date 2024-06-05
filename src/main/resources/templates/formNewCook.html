@@ -7,9 +7,9 @@
 		<link rel="stylesheet" href="/stile.css?version=3" />		
 	</head>
 	<body>
-		<div><a href="/"><img src="/Foto-Merialdo.jpg" height="50%"/></a></div>
+		<div><a href="/"><img src="/images/Foto-Merialdo.jpg" height="50%"/></a></div>
 		<h1>Aggiungi un nuovo Cuoco</h1>
-		<form th:action="@{/cooks}" method="POST" th:object="${cook}">
+		<form th:action="@{/admin/cooks}" method="POST" th:object="${cook}">
 		<div> <span th:text="${messaggioErrore}">Errore</span> </div>
 		<div>
         Nome: <span><input required type="text" th:field="${cook.name}"/></span>

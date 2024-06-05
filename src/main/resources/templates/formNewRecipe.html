@@ -5,9 +5,9 @@
     <link rel="stylesheet" href="/stile.css?version=3" />
     </head>
   <body>
-    <div><a href="/"><img src="/Foto-Merialdo.jpg" height="50%"/></a></div>
+    <div><a href="/"><img src="/images/Foto-Merialdo.jpg" height="50%"/></a></div>
     <h1>Aggiungi una nuova Ricetta</h1>
-    <form th:action="@{/recipes}" method="POST" th:object="${recipe}">
+    <form th:action="@{/admin/recipes}" method="POST" th:object="${recipe}">
     <div th:if="${#fields.hasGlobalErrors()}">
         <p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p> 
     </div>

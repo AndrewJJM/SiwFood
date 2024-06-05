@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Gestione Ingredienti</title>
+	<link rel="stylesheet" href="stile.css?version=2" />
+</head>
+
+<body>
+
+
+<div class="box">
+	<div class="form">
+		<h1 th:text="'Ingredienti della Ricetta ' + ${recipe.name}"></h1>
+		<div th:if="${recipe.ingredients.isEmpty()}">Non sono stati aggiunti ingredienti a questa ricetta</div>
+		<ul>
+			<li th:each="ingredient : ${recipe.ingredients}">
+				<span th:text="${ingredient.name}+' '+${ingredient.quantity}+' '+${ingredient.measurement_unit}" > sarcicce 2 pezz'</span>
+				<a th:href="@{'/admin/removeIngredient/'+ ${ingredient.id}+'/'+${recipe.id}}"><button type="button"> Cancella</button></a>
+			</li>
+
+		</ul>
+		<div>
+			<!-- INVECE DI MOSTRARE LA LISTA, AGGIUNGERE UN MINI FORM PER AGGIUNGERE UN NUOVO INGREDIENTE -->
+			Aggiungi Ingrediente:
+			<form th:action="@{'/admin/setIngredient/'+'${recipe.id}'}" method="POST" th:object="${ingredient}">
+				<div th:if="${#fields.hasGlobalErrors()}">
+        			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p> 
+    			</div>
+
+      			<div>
+        			Nome Ingrediente: 
+        			<span><input type="text" th:field="{ingredient.name}"/></span>
+        			<span th:if="${#fields.hasErrors('ingredient.name')}" th:errors="{ingredient.name}"></span>
+      			</div>
+      			<div>
+        			Quantità: 
+        			<span><input type="number" th:field="{ingredient.quantity}"/></span>
+        			<span th:if="${#fields.hasErrors('ingredient.quantity')}" th:errors="{ingredient.quantity}"></span>
+      			</div>
+      			<div>
+        			Unità di misura: 
+        			<span><input type="text" th:field="{ingredient.measurement_unit}"/></span>
+        			<span th:if="${#fields.hasErrors('ingredient.measurement_unit')}" th:errors="{ingredient.measurement_unit}"></span>
+      			</div>
+      			<span><button type="submit">Conferma</button></span>
+			</form>	
+			<div class="box2">
+			<a th:href="@{'/admin/formUpdateMovie/'+ ${movie.id}}"><button type="button">Fine</button></a>
+		</div>
+	</div>
+</div>
+</body>
+
+</html>

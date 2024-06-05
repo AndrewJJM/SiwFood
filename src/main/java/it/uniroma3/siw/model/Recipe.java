@@ -27,7 +27,7 @@ public class Recipe {
     
     private Set<String> images;
     
-    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, fetch = FetchType.EAGER) //forse conviene direttamente CascadeType.ALL?
+    @OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER) 
     @JoinColumn(name="recipes_id") //per evitare la creazione di una tabella di join inutile
     private Set<Ingredient> ingredients;
     

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    <title>Nuova Ricetta</title>
+    <link rel="stylesheet" href="/stile.css?version=3" />
+    </head>
+  <body>
+    <div><a href="/"><img src="/images/Foto-Merialdo.jpg" height="50%"/></a></div>
+    <h1>Aggiungi una nuova Ricetta</h1>
+    <form th:action="@{/recipes}" method="POST" th:object="${recipe}">
+    <div th:if="${#fields.hasGlobalErrors()}">
+        <p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p> 
+    </div>
+
+      <div>
+        Titolo: 
+        <span><input type="text" th:field="*{name}"/></span>
+        <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+      </div>
+      
+      <div>
+        Procedimento: 
+        <span><input type="text" th:field="*{description}"/></span>
+        <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span>
+      </div>
+      
+      <div>
+        URL immagine: 
+        <span><input type="url" th:field="${recipe.images}" /></span>
+      </div>
+      <h1 th:each = "ingredient : ${recipe.ingredients}">Ingredienti</h1>
+      <div id="myForm">
+      Nella prossima pagina puoi inserire gli ingredienti
+      </div>
+      <button type="button" onclick="myFunction()">Add Order Object</button>
+      <div>
+        <span><button type="submit">Conferma</button></span>
+      </div>
+    </form>
+    
+    <script>
+        function addOrderObject() {
+            let container = document.createElement('fieldset');
+            let legend = document.createElement('legend');
+            legend.textContent = 'Order Object';
+            container.appendChild(legend);
+
+            let nameLabel = document.createElement('label');
+            nameLabel.setAttribute('for', 'name');
+            nameLabel.textContent = 'Name:';
+            container.appendChild(nameLabel);
+
+            let nameInput = document.createElement('input');
+            nameInput.setAttribute('type', 'text');
+            nameInput.setAttribute('name', 'orderObjects[].name');
+            container.appendChild(nameInput);
+
+            let quantityLabel = document.createElement('label');
+            quantityLabel.setAttribute('for', 'quantity');
+            quantityLabel.textContent = 'Quantity:';
+            container.appendChild(quantityLabel);
+
+            let quantityInput = document.createElement('input');
+            quantityInput.setAttribute('type', 'number');
+            quantityInput.setAttribute('name', 'orderObjects[].quantity');
+            container.appendChild(quantityInput);
+
+            document.querySelector('form').insertBefore(container, document.querySelector('button[type="button"]'));
+        }
+        function myFunction() {
+        	let container = document.createElement('fieldset');
+            let legend = document.createElement('legend');
+            legend.textContent = 'Order Object';
+            container.appendChild(legend);
+
+            let nameLabel = document.createElement('label');
+            nameLabel.setAttribute('for', 'name');
+            nameLabel.textContent = 'Name:';
+            container.appendChild(nameLabel);
+            }
+        	</script>
+        	
+    </script>
+  </body>
+</html>
