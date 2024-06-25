@@ -4,14 +4,16 @@
 <head>
 	<title>
 		SiwFood - Homepage
-	</title>
-	<link rel="stylesheet" href="/css/stile.css" />
+	</title>	
+	<div th:replace="~{fragments :: Stylesheet}"></div>
 </head>
 
 <body>
+	<div th:replace="~{fragments :: Navbar}"></div>
+	<div class="container-fluid">
 	<div><img src="/images/Foto-Merialdo.jpg" height="50%" /></div>
 	<h1>Consulta</h1>
-	<div> 
+	<div>
 		<a href="/recipes">Lista ricette</a>
 	</div>
 	<div> 
@@ -26,7 +28,7 @@
 	<div> 
 		<a href="/admin/newCook">Aggiungi cuoco</a>
 	</div>
-	
+	</div>
+	<div th:replace="~{fragments :: Footer}"></div>
 </body>
-
 </html>
