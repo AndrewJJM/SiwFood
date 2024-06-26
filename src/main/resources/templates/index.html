@@ -10,7 +10,41 @@
 
 <body>
 	<div th:replace="~{fragments :: Navbar}"></div>
-	<div class="container-fluid">
+	<div th:replace="~{fragments :: Carousel-home}"></div>
+	<!-- Portfolio-->
+	        <div id="portfolio">
+	            <div class="container-fluid p-0">
+	                <div class="row g-0 mt-3">
+	                    <div class="col-lg-6 col-sm-6">
+	                        <a class="portfolio-box" href="/recipes" title="Project Name">
+	                            <img class="img-fluid" src="/images/baked-cake.jpg" alt="..." />
+	                            <div class="portfolio-box-caption">
+	                                <div class="project-category text-white-50">Category</div>
+	                                <div class="project-name">Project Name</div>
+	                            </div>
+	                        </a>
+	                    </div>
+	                    <div class="col-lg-6 col-sm-6">
+	                        <h1>Scopri tutte le ricette</h1>
+	                    </div>
+	                </div>
+					<div class="row g-0 bg-orange">
+						<div class="col-lg-6 col-sm-6">
+						    <h1 class="text-cream">Scopri tutti i cuochi</h1>
+						</div>
+						<div class="col-lg-6 col-sm-6">
+						    <a class="portfolio-box" href="/cooks" title="Project Name">
+						        <img class="img-fluid" src="/images/cooking-kids.jpg" alt="..." />
+						        <div class="portfolio-box-caption">
+						            <div class="project-category text-white-50">Category</div>
+						            <div class="project-name">Project Name</div>
+						        </div>
+						    </a>
+						</div>
+	                </div>
+	            </div>
+	        </div>
+	  
 	<div><img src="/images/Foto-Merialdo.jpg" height="50%" /></div>
 	<h1>Consulta</h1>
 	<div>
@@ -19,7 +53,7 @@
 	<div> 
 		<a href="/admin/newRecipe">Aggiungi ricette</a>
 	</div>
-	<div> 
+	<div>
 		<a href="/formSearchMovies">link non funzionante</a>
 	</div>
 	<div> 
@@ -27,7 +61,6 @@
 	</div>
 	<div> 
 		<a href="/admin/newCook">Aggiungi cuoco</a>
-	</div>
 	</div>
 	<div th:replace="~{fragments :: Footer}"></div>
 </body>

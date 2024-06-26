@@ -4,9 +4,12 @@
   <head>
     <title>Cuochi</title>
     <link rel="stylesheet" href="/stile.css?version=2" />
+	<div th:replace="~{fragments :: Stylesheet}"></div>
   </head>
   
   <body>
+	<div th:replace="~{fragments :: Navbar}"></div>
+
     <div><a href="/"><img src="/images/Foto-Merialdo.jpg" height="50%"/></a></div>
     <h1>Cuochi</h1>
     <div th:if="${cooks.isEmpty()}">Non ci sono cuochi nel sistema</div>
@@ -16,6 +19,8 @@
            th:text="${cook.name} + ' (' + ${cook.surname} + ')'"> Carlo Cracco </a>
       </li>
     </ul>
+	<div th:replace="~{fragments :: Footer}"></div>
+
   </body>
 
 </html>
