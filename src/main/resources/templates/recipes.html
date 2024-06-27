@@ -12,7 +12,7 @@
 
     <!--div><a href="/"><img src="/images/baked-cake.png" height="50%"/></a></div-->
     <h1 class="text-center text-uppercase fw-bolder pt-3">Ricette</h1>
-    <div th:if="${recipes.isEmpty()}">
+    <div th:if="${recipes.isEmpty()}" class="d-flex justify-content-center align-items-center py-5" style="height: 50vh;">
       <h1 class="text-center text-purple fw-bolder">Non ci sono Ricette nel sistema</h1>
     </div>
     <!-- grid-->
