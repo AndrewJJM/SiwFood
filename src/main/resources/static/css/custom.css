@@ -52,7 +52,6 @@ a:hover{
   font-family: "Merriweather Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 0.85rem;
   font-weight: 600;
-  text-transform: uppercase;
 }
 #portfolio .container-fluid .portfolio-box .portfolio-box-caption .project-name, #portfolio .container-sm .portfolio-box .portfolio-box-caption .project-name, #portfolio .container-md .portfolio-box .portfolio-box-caption .project-name, #portfolio .container-lg .portfolio-box .portfolio-box-caption .project-name, #portfolio .container-xl .portfolio-box .portfolio-box-caption .project-name, #portfolio .container-xxl .portfolio-box .portfolio-box-caption .project-name {
   font-size: 1.2rem;
@@ -60,6 +59,61 @@ a:hover{
 #portfolio .container-fluid .portfolio-box:hover .portfolio-box-caption, #portfolio .container-sm .portfolio-box:hover .portfolio-box-caption, #portfolio .container-md .portfolio-box:hover .portfolio-box-caption, #portfolio .container-lg .portfolio-box:hover .portfolio-box-caption, #portfolio .container-xl .portfolio-box:hover .portfolio-box-caption, #portfolio .container-xxl .portfolio-box:hover .portfolio-box-caption {
   opacity: 1;
 }
+
+.grid-caption {
+  padding: 1.5rem;
+  text-align: center;
+  background-color: #CD4B27;
+}
+.grid-caption-heading {
+  font-size: 1.5rem;
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-weight: 700;
+  margin-bottom: 0;
+}
+.grid-caption-subheading {
+  font-style: italic;
+  font-family: "Roboto Slab", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.grid-box {
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+
+.grid-box img {
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.grid-box::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(93, 46, 140, 0.8); /* Overlay viola */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.grid-box:hover::after {
+  opacity: 1;
+}
+
+.grid-box:hover img {
+  transform: scale(1.1);
+}
+
+
+.mt-n2 {
+  margin-top: -0.50rem !important;
+}
+
+
 /*Classi base*/
 .text-cream{
 	color: #F0D0A9;
@@ -67,9 +121,16 @@ a:hover{
 .text-orange{
 	color: #CD4B27;
 }
+.text-purple{
+	color: #5D2E8C;
+}
 .bg-orange{
 	background-color: #CD4B27;
 }
 .bg-cream{
 	background-color: #F0D0A9;
+}
+
+.icon-pref{
+  text-align:center;
 }
