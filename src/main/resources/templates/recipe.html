@@ -2,9 +2,10 @@
 <html>
 <head>
 	<title>Ricetta</title>
-    <link rel="stylesheet" href="/stile.css?version=2" />
+	<div th:replace="~{fragments :: Stylesheet}"></div>
 </head>
   <body>
+	<div th:replace="~{fragments :: Navbar}"></div>
     <div><a href="/"><img src="/images/Foto-Merialdo.jpg" height="50%"/></a></div>
     <div th:if="${recipe}">
     <h1 th:text="${recipe.name}">Nome Ricetta</h1>
@@ -17,6 +18,7 @@
 			<img width="30%"  th:src="${image}" />
 		</span>
     </div>
-    <div th:unless="${recipe}">Non esiste</div>
+    <h1 th:unless="${recipe}" class="text-center text-purple fw-bolder">Non esiste questa ricetta nel sistema</h1>
+	<div th:replace="~{fragments :: Footer}"></div>
   </body>
 </html>
