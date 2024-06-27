@@ -1,5 +1,7 @@
 package it.uniroma3.siw.controller;
 
+import java.util.HashSet;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import it.uniroma3.siw.controller.validator.RecipeValidator;
+import it.uniroma3.siw.model.Ingredient;
 import it.uniroma3.siw.model.Recipe;
 import it.uniroma3.siw.service.RecipeService;
 import jakarta.validation.Valid;
@@ -19,13 +22,15 @@ public class RecipeController {
 	  @Autowired RecipeService recipeService;
 	  @Autowired RecipeValidator recipeValidator;
 	  
-	  @GetMapping("/newRecipe")
+	  @GetMapping("/admin/newRecipe")
 	  public String formNewRecipe(Model model) {
-		  model.addAttribute("recipe", new Recipe());
+		  Recipe recipe = new Recipe();
+		  recipe.setIngredients(new HashSet<Ingredient>());
+		  model.addAttribute("recipe", recipe);
 		  return "formNewRecipe.html";
 	  }
 	  
-	  @PostMapping("/recipes")
+	  @PostMapping("/admin/recipes")
 	  public String newRecipe(@Valid @ModelAttribute("recipe") Recipe recipe, BindingResult bindingResult, Model model) {
 		  this.recipeValidator.validate(recipe, bindingResult);
 		  if (bindingResult.hasErrors()) { 			//il binding controlla i vincoli espliciti semplici
@@ -33,7 +38,7 @@ public class RecipeController {
 		  } else {
 			  this.recipeService.save(recipe); 
 			  model.addAttribute("recipe", recipe); //per il redirect
-			  return "redirect:recipes/" + recipe.getId(); //per evitare la doppia richiesta in caso di refresh della pagina
+			  return "redirect:/recipes/" + recipe.getId(); //per evitare la doppia richiesta in caso di refresh della pagina
 		  }
 	  }
 	  

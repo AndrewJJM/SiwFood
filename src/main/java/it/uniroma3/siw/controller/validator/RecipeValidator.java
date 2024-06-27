@@ -8,6 +8,8 @@ import org.springframework.validation.Validator;
 import it.uniroma3.siw.model.Recipe;
 import it.uniroma3.siw.repository.RecipeRepository;
 
+/************************************************** Questa classe implementa validazioni custom lato server********************************************/
+
 @Component
 public class RecipeValidator implements Validator {
 	@Autowired
@@ -19,7 +21,7 @@ public class RecipeValidator implements Validator {
 		Recipe recipe = (Recipe)o;
 		if (recipe.getName()!=null && recipe.getDescription()!=null 
 				&& recipeRepository.existsByNameAndDescription(recipe.getName(), recipe.getDescription())) {
-			errors.reject("ingredient.duplicate");
+			errors.reject("recipe.duplicate");
 		}
 	}
 	@Override
