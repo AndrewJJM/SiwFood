@@ -22,7 +22,7 @@ public class RecipeController {
 	  @Autowired RecipeService recipeService;
 	  @Autowired RecipeValidator recipeValidator;
 	  
-	  @GetMapping("/admin/newRecipe")
+	  @GetMapping("/user/newRecipe")
 	  public String formNewRecipe(Model model) {
 		  Recipe recipe = new Recipe();
 		  recipe.setIngredients(new HashSet<Ingredient>());
@@ -30,7 +30,7 @@ public class RecipeController {
 		  return "formNewRecipe.html";
 	  }
 	  
-	  @PostMapping("/admin/recipes")
+	  @PostMapping("/user/recipes")
 	  public String newRecipe(@Valid @ModelAttribute("recipe") Recipe recipe, BindingResult bindingResult, Model model) {
 		  this.recipeValidator.validate(recipe, bindingResult);
 		  if (bindingResult.hasErrors()) { 			//il binding controlla i vincoli espliciti semplici

@@ -16,7 +16,7 @@
 		<h1 class="text-center text-purple fw-bolder">Non ci sono Cuochi nel sistema</h1>
 	</div>
 	<div id="grid">
-	      <div class="container-fluid p-3">
+	      <div class="container-fluid p-3 mb-4">
 	          <div class="row g-3" >
 	              <div class="col-lg-4 col-sm-6" th:each="cook : ${cooks}">
 	                  <a class="grid-box" th:href="@{'/cooks/' + ${cook.id}}">
@@ -30,15 +30,8 @@
 	          </div>
 	      </div>
 	  </div>
+	  <div th:replace="~{fragments :: Footer}"></div>
 	 
-    <ul>
-      <li th:each="cook : ${cooks}">
-        <a th:href="@{'/cooks' + '/' + ${cook.id}}"
-           th:text="${cook.name} + ' (' + ${cook.surname} + ')'"> Carlo Cracco </a>
-      </li>
-    </ul>
-	<div th:replace="~{fragments :: Footer}"></div>
-
   </body>
 
 </html>
