@@ -17,7 +17,7 @@
     </div>
     <!-- grid-->
     <div id="grid">
-      <div class="container-fluid p-3">
+      <div class="container-fluid p-4 mb-4">
           <div class="row g-3" >
               <div class="col-lg-4 col-sm-6" th:each="recipe : ${recipes}">
                   <a class="grid-box" th:href="@{'/recipes/' + ${recipe.id}}">
@@ -31,13 +31,8 @@
           </div>
       </div>
   </div>
-    <ul>
-      <li th:each="recipe : ${recipes}">
-        <a th:href="@{'/recipes' + '/' + ${recipe.id}}"
-           th:text="${recipe.name} + ' (' + ${recipe.cook} + ')'">Ratatouille (Remy Therat)</a>
-      </li>
-    </ul>
-	<div th:replace="~{fragments :: Footer}"></div>
+  
+  <div th:replace="~{fragments :: Footer}"></div>
 
   </body> 
 

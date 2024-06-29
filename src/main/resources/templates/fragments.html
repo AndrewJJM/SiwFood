@@ -14,7 +14,7 @@
 	<script src="https://kit.fontawesome.com/cd21cc4b26.js" crossorigin="anonymous"></script>
 	<link href="/css/custom.css" rel="stylesheet">
 </div>
-<!--------------------------------------------NAVBAR------------------------------------------------------>
+<!--------------------------------------------NAVBAR Anonymous------------------------------------------------------>
 <nav class="navbar navbar-expand-lg custom-navbar sticky-top" th:fragment="Navbar">
   <div class="container-fluid">
     <a class="navbar-brand" href="/">
@@ -38,6 +38,83 @@
     </div>
   </div>
 </nav>
+<!--------------------------------------------NAVBAR Logged------------------------------------------------------>
+<nav class="navbar navbar-expand-lg custom-navbar sticky-top" th:fragment="Navbar-logged">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">
+		  <img src="/images/logo/logo-no-background.png" width="300">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/recipes">Ricette</a>
+        </li>
+		<li class="nav-item">
+			<a class="nav-link" href="/cooks">Cuochi</a>
+		</li>
+		<li class="nav-item dropdown">
+			<a class="nav-link dropdow-toggle" href="/login" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+				<i class="bi bi-person-circle"></i>
+			</a>
+		  <ul class="dropdown-menu dropdown-menu-end">
+			<li><a class="dropdown-item" href="#">Profilo</a></li>
+		    <li><a class="dropdown-item" href="#">Le tue ricette</a></li>
+			<li><hr class="dropdown-divider"></li>
+		    <li><a class="dropdown-item" href="/logout">Logout</a></li>
+		  </ul>
+		</li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+<!--------------------------------------------NAVBAR Admin------------------------------------------------------>
+<nav class="navbar navbar-expand-lg custom-navbar sticky-top" th:fragment="Navbar-admin">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">
+		  <img src="/images/logo/logo-no-background.png" width="300">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdow-toggle" href="/recipes" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+			Ricette
+		  </a>
+		  <ul class="dropdown-menu">
+		    <li><a class="dropdown-item" href="#">Gestisci ricette</a></li>
+		  	<li><a class="dropdown-item" href="/user/newRecipe">Aggiungi ricette</a></li>
+		  </ul>
+        </li>
+		
+		<li class="nav-item dropdown">
+			<a class="nav-link dropdow-toggle" href="/cooks" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+				Cuochi
+			</a>
+			<ul class="dropdown-menu dropdown-menu-end">
+			  <li><a class="dropdown-item" href="#">Gestisci cuochi</a></li>
+			  <li><a class="dropdown-item" href="/user/newRecipe">Aggiungi cuochi</a></li>
+			</ul>
+		</li>
+		<li class="nav-item dropdown">
+			<a class="nav-link dropdow-toggle" href="/login" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+				<i class="bi bi-person-circle"></i>
+			</a>
+		  <ul class="dropdown-menu dropdown-menu-end">
+		    <li><a class="dropdown-item" href="/logout">Logout</a></li>
+		  </ul>
+		</li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
 <!-----------------------------------------------CAROUSEL-------------------------------------------------->
 <div id="carouselExampleDark" class="carousel carousel slide" data-bs-ride="carousel" th:fragment="Carousel-home">
   <div class="carousel-indicators">
