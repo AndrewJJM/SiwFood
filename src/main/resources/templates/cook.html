@@ -5,7 +5,9 @@
 		<div th:replace="~{fragments :: Stylesheet}"></div>
   	</head>
   <body>
-	<div th:replace="~{fragments :: Navbar}"></div>
+	<div th:if="${role!=null && role=='ADMIN'}"><div th:replace="~{fragments :: Navbar-admin}"></div></div>
+	<div th:if="${role!=null && role=='DEFAULT'}"><div th:replace="~{fragments :: Navbar-logged}"></div></div>
+	<div th:if="${role==null}"><div th:replace="~{fragments :: Navbar}"></div></div>
 
     <div><a href="/"><img th:src="@{'/uploadedImage/'+ ${cook.image.id}}" height="50%"/></a></div>
     <div th:if="${cook}">

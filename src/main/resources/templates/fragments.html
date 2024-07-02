@@ -14,6 +14,18 @@
 	<script src="https://kit.fontawesome.com/cd21cc4b26.js" crossorigin="anonymous"></script>
 	<link href="/css/custom.css" rel="stylesheet">
 </div>
+<!------------------------------------------NAVBAR CHECK------------------------------------------------------------->
+<div th:fragment="Navbar-check">
+<div th:if="${#authorization.expression('isAnonymous()')}">
+    <div th:replace="~{fragments :: Navbar}"></div>
+</div>
+<div th:if="${#authorization.expression('hasRole(''ADMIN'')')}">
+    <div th:replace="~{fragments :: Navbar-admin}"></div>
+</div>
+<div th:if="${#authorization.expression('hasRole(''USER'')')}">
+    <div th:replace="~{fragments :: Navbar-logged}"></div>
+</div>
+</div>
 <!--------------------------------------------NAVBAR Anonymous------------------------------------------------------>
 <nav class="navbar navbar-expand-lg custom-navbar sticky-top" th:fragment="Navbar">
   <div class="container-fluid">
@@ -177,6 +189,8 @@
         </div>
     </div>
   </footer>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script></div>
 </div>
 </body>

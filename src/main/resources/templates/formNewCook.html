@@ -7,7 +7,9 @@
 		<div th:replace="~{fragments :: Stylesheet}"></div>
 	</head>
 	<body>
-		<div th:replace="~{fragments :: Navbar}"></div>
+		<div th:if="${role!=null && role=='ADMIN'}"><div th:replace="~{fragments :: Navbar-admin}"></div></div>
+		<div th:if="${role!=null && role=='DEFAULT'}"><div th:replace="~{fragments :: Navbar-logged}"></div></div>
+		<div th:if="${#authorization.expression('isAnonymous()')}"><div th:replace="~{fragments :: Navbar}"></div></div>
 
 		<section class="generic_section">
 				<div class="container">
@@ -19,26 +21,30 @@
 					<div class="row justify-content-center">
 						<div class="col-md-6 mb-5">
 
-							<div th:if="${param.error} and ${session}" th:with="errorMsg=${session['SPRING_SECURITY_LAST_EXCEPTION']}">
-								<div class="alert alert-dismissible alert-danger error mb-5">
-									OPS! Errore nella creazione, controlla di aver inserito correttamente i dati!
-								</div>
-							</div>
+							
 
 							<div class="container my-3">
 							        <div class="form_container">
-							            <form th:action="@{/admin/cooks}" method="post" th:object="${cook}" enctype="multipart/form-data">						                
+							            <form th:action="@{/admin/cooks}" method="post" th:object="${cook}" enctype="multipart/form-data">
+											<div th:if="${#fields.hasGlobalErrors()}" class="alert alert-danger" role="alert">
+												<h4 class="text-orange fw-semibold" align="center" th:each="err : ${#fields.globalErrors()}" th:text="'Errore: ' + ${err}">...</h4>
+											</div>
+						                
 											<div class="mb-2">
 											  <label class="form-label">Nome:</label>
-											  <input type="text" th:field="${cook.name}" class="form-control" placeholder="Remy" required>
+											  <input type="text" th:field="${cook.name}" class="form-control" placeholder="Remy">
+											  <span class="text-orange" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
 											</div>
+											
 											<div class="mb-2">
 											  <label class="form-label">Cognome:</label>
-											  <input type="text" th:field="${cook.surname}" class="form-control" placeholder="The Rat" required>
+											  <input type="text" th:field="${cook.surname}" class="form-control" placeholder="The Rat">
+											  <span class="text-orange" th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}"></span>
 											</div>
 											<div class="mb-2">
 											  <label class="form-label">Data di Nascita:</label>
-											  <input type="date" th:field="${cook.dateOfBirth}" class="form-control" required>
+											  <input type="date" th:field="${cook.dateOfBirth}" class="form-control">
+											  <span class="text-orange" th:if="${#fields.hasErrors('dateOfBirth')}" th:errors="*{dateOfBirth}"></span>
 											</div>
 											<div class="mb-2">
 											  <label class="form-label">Carica immagine(500x500):</label>
@@ -46,15 +52,9 @@
 											</div>
 
 
-											<div class="d-flex justify-content-between align-items-center">
+											<div class="d-flex justify-content-end align-items-center">
 											    <div>
-											        <button type="submit" class="btn btn-success me-2 mt-3">Conferma</button>
-											        <a href="/register" class="btn btn-primary mt-3">Registrati</a>
-											    </div>
-											    <div class="social-container m-2 mt-3">
-											        <a href="/oauth2/authorization/facebook" class="social" id="facebook"><i class="fa fa-facebook"></i></a>
-											        <a href="/oauth2/authorization/google" class="social" id="google"><i class="fa fa-google"></i></a>
-											        <a href="/oauth2/authorization/github" class="social" id="github"><i class="fa fa-github"></i></a>
+											        <button type="submit" class="btn btn-success mt-3">Conferma</button>
 											    </div>
 											</div>
 							            </form>

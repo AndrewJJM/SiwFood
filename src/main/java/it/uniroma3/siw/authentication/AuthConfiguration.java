@@ -54,7 +54,7 @@ import javax.sql.DataSource;
 //                .requestMatchers("/**").permitAll()
                         // chiunque (autenticato o no) può accedere alle pagine index, login, register, ai css e alle immagini
                         .requestMatchers(HttpMethod.GET, "/", "/index", "/register", "/css/**", "/images/**", "favicon.ico", 
-                        "/recipes/**", "/cooks/**").permitAll()
+                        "/recipes/**", "/cooks/**", "uploadedImage/**").permitAll()
                         // chiunque (autenticato o no) può mandare richieste POST al punto di accesso per login e register 
                         .requestMatchers(HttpMethod.POST, "/register", "/login").permitAll()
                         .requestMatchers(HttpMethod.GET, "/admin/**").hasAnyAuthority(ADMIN_ROLE)
@@ -65,7 +65,7 @@ import javax.sql.DataSource;
                         .anyRequest().authenticated()).formLogin(login -> login
                 .loginPage("/login")
                 .permitAll()
-                .defaultSuccessUrl("/success", true)
+                .defaultSuccessUrl("/?welcome", true)
                 .failureUrl("/login?error=true"))
                 .logout(logout -> logout
                         // il logout è attivato con una richiesta GET a "/logout"
