@@ -2,15 +2,18 @@
 <html>
 	<head>
 		<title>Cuoco</title>
-		<link rel="stylesheet" href="/stile.css?version=2" />
+		<div th:replace="~{fragments :: Stylesheet}"></div>
   	</head>
   <body>
-    <div><a href="/"><img src="/images/Foto-Merialdo.jpg" height="50%"/></a></div>
+	<div th:replace="~{fragments :: Navbar}"></div>
+
+    <div><a href="/"><img th:src="@{'/uploadedImage/'+ ${cook.image.id}}" height="50%"/></a></div>
     <div th:if="${cook}">
     	<h1 th:text="${cook.name} + ' ' + ${cook.surname}">Nome Cuoco</h1>
 		<!-- <div>Cognome: <span th:text="${cook.surname}">Cognome Cuoco</span></div> -->
         <div>Anno di nascita: <span th:text="'(' + ${cook.dateOfBirth} + ')'">2000</span></div>
     </div>
     <div th:unless="${cook}">Non esiste</div>
+	<div th:replace="~{fragments :: Footer}"></div>
   </body>
 </html>

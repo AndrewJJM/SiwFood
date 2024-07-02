@@ -25,7 +25,7 @@ public class RecipeController {
 	  @GetMapping("/user/newRecipe")
 	  public String formNewRecipe(Model model) {
 		  Recipe recipe = new Recipe();
-		  recipe.setIngredients(new HashSet<Ingredient>());
+		  //recipe.setIngredients(new HashSet<Ingredient>());
 		  model.addAttribute("recipe", recipe);
 		  return "formNewRecipe.html";
 	  }

@@ -24,7 +24,7 @@
                       <img class="img-fluid rounded-top-4" src="/images/baked-cake.png" alt="..." />
                       <div class="grid-caption mt-n2 rounded-bottom-4">
                         <div class="grid-caption-heading text-cream" th:text="${recipe.name}">Ratatouille</div>
-                        <div class="grid-caption-subheading text-muted" th:text="'('+${recipe.cook}+')'">Remy Therat</div>
+                        <div class="grid-caption-subheading text-muted" th:text="'('+${recipe.cook.name}+' '+ ${recipe.cook.surname}+')'">Remy The rat</div>
                     </div>
                   </a>
               </div>

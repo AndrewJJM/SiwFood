@@ -18,10 +18,13 @@ public class CookService {
 	public Iterable<Cook> findAll() {
 		return cookRepository.findAll(); //operazione CRUD della Repo
 	}
-
 	
 	public void save(Cook cook) {
 		cookRepository.save(cook);
+	}
+	
+	public void remove(Cook cook) {
+		cookRepository.delete(cook);
 	}
 
 

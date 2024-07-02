@@ -28,7 +28,7 @@
 
         <!-- Recipe Images -->
         <div class="row mt-4 gallery">
-            <div class="col-md-4" th:each="image : ${recipe.images}">
+            <div class="col-md-4" th:each="image : ${recipe.image}">
                 <img th:src="@{'/images/' + ${image}}" alt="..." class="img-fluid rounded mb-4">
             </div>
         </div>

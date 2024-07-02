@@ -4,31 +4,69 @@
 		<title>
 			Form Nuovo Cuoco
 		</title>
-		<link rel="stylesheet" href="/stile.css?version=3" />		
+		<div th:replace="~{fragments :: Stylesheet}"></div>
 	</head>
 	<body>
-		<div><a href="/"><img src="/images/Foto-Merialdo.jpg" height="50%"/></a></div>
-		<h1>Aggiungi un nuovo Cuoco</h1>
-		<form th:action="@{/admin/cooks}" method="POST" th:object="${cook}">
-		<div> <span th:text="${messaggioErrore}">Errore</span> </div>
-		<div>
-        Nome: <span><input required type="text" th:field="${cook.name}"/></span>
-		</div>
-		<span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
-      <div>
-        Cognome: <span><input required type="text" th:field="${cook.surname}"/></span>
-      </div>
-      	<span th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}"></span>     
-      <div>
-        Data di nascita: <span><input type="date" th:field="${cook.dateOfBirth}"/></span>
-      </div>
-		<span th:if="${#fields.hasErrors('dateOfBirth')}" th:errors="*{dateOfBirth}"></span>     
-      
-      <div>
-        <span><button type="submit">Conferma</button></span>
-      </div>
-    </form>
+		<div th:replace="~{fragments :: Navbar}"></div>
 
-		
+		<section class="generic_section">
+				<div class="container">
+					<div class="mt-5 mb-2">
+						<h1 class="text-center text-uppercase fw-bolder pt-3">Aggiungi Cuoco</h1>
+					</div>
+						
+
+					<div class="row justify-content-center">
+						<div class="col-md-6 mb-5">
+
+							<div th:if="${param.error} and ${session}" th:with="errorMsg=${session['SPRING_SECURITY_LAST_EXCEPTION']}">
+								<div class="alert alert-dismissible alert-danger error mb-5">
+									OPS! Errore nella creazione, controlla di aver inserito correttamente i dati!
+								</div>
+							</div>
+
+							<div class="container my-3">
+							        <div class="form_container">
+							            <form th:action="@{/admin/cooks}" method="post" th:object="${cook}" enctype="multipart/form-data">						                
+											<div class="mb-2">
+											  <label class="form-label">Nome:</label>
+											  <input type="text" th:field="${cook.name}" class="form-control" placeholder="Remy" required>
+											</div>
+											<div class="mb-2">
+											  <label class="form-label">Cognome:</label>
+											  <input type="text" th:field="${cook.surname}" class="form-control" placeholder="The Rat" required>
+											</div>
+											<div class="mb-2">
+											  <label class="form-label">Data di Nascita:</label>
+											  <input type="date" th:field="${cook.dateOfBirth}" class="form-control" required>
+											</div>
+											<div class="mb-2">
+											  <label class="form-label">Carica immagine(500x500):</label>
+											  <input type="file" name="file" class="form-control" required>
+											</div>
+
+
+											<div class="d-flex justify-content-between align-items-center">
+											    <div>
+											        <button type="submit" class="btn btn-success me-2 mt-3">Conferma</button>
+											        <a href="/register" class="btn btn-primary mt-3">Registrati</a>
+											    </div>
+											    <div class="social-container m-2 mt-3">
+											        <a href="/oauth2/authorization/facebook" class="social" id="facebook"><i class="fa fa-facebook"></i></a>
+											        <a href="/oauth2/authorization/google" class="social" id="google"><i class="fa fa-google"></i></a>
+											        <a href="/oauth2/authorization/github" class="social" id="github"><i class="fa fa-github"></i></a>
+											    </div>
+											</div>
+							            </form>
+							        </div>
+							    </div>							
+							 </div>
+					</div>
+
+					<br>
+				</div>
+			</section>
+	
+	<div th:replace="~{fragments :: Footer}"></div>
 	</body>
 </html>

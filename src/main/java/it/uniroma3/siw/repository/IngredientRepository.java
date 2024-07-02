@@ -11,6 +11,8 @@ import it.uniroma3.siw.model.Ingredient;
 
 @Repository
 public interface IngredientRepository extends CrudRepository<Ingredient, Long> {
+
+	boolean existsByName(String name);
 	
 	/*Possibile aggiungere metodi all'interfaccia SENZA DEFINIRLI, grazie alla
 	CONVENZIONE SEMANTICA: (operazione + By + attibuti (separati da And)*/

@@ -20,6 +20,7 @@ public class UserService {
 
     @Autowired
     protected UserRepository userRepository;
+    
 
     /**
      * This method retrieves a User from the DB based on its ID.

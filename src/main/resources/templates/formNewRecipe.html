@@ -2,9 +2,73 @@
 <html>
 	<head>
     <title>Nuova Ricetta</title>
-    <link rel="stylesheet" href="/stile.css?version=3" />
+	<div th:replace="~{fragments :: Stylesheet}"></div>
     </head>
   <body>
+	<div th:replace="~{fragments :: Navbar}"></div>
+
+	<section class="generic_section">
+			<div class="container">
+				<div class="my-5">
+					<h1 class="text-center text-uppercase fw-bolder pt-3">Nuova Ricetta</h1>
+				</div>
+					
+
+				<div class="row justify-content-center">
+					<div class="col-md-6 mb-5">
+
+						<div th:if="${param.error} and ${session}" th:with="errorMsg=${session['SPRING_SECURITY_LAST_EXCEPTION']}">
+							<div class="alert alert-dismissible alert-danger error mb-5">
+								OPS! Errore nella creazione, controlla di aver inserito correttamente i dati!
+							</div>
+						</div>
+
+						<div class="container my-3">
+						        <div class="form_container">
+						            <form th:action="@{/recipes}" method="post">						                
+										<div class="mb-2">
+										  <label for="name" class="form-label">Nome:</label>
+										  <input type="email" th:field="${recipe.name}" class="form-control" name="name" id="name" placeholder="lasagna alla bolognese">
+										</div>
+										<div class="mb-2">
+										  <label for="description" class="form-label">Procedimento:</label>
+										  <textarea class="form-control"  id="description" rows="3" th:field="${recipe.description}"
+										  placeholder="1. Mettere uno strato sopra l'altro come fossero dei Lego &#10;2. Gustare"></textarea>
+										</div>
+
+						                <div class="form-control">
+						                    <input type="password" class="form-control my-2" placeholder="Procedimento" name="description" required>
+						                </div>
+
+										<div class="d-flex justify-content-between align-items-center">
+										    <div>
+										        <button type="submit" class="btn btn-success me-2 mt-3">Conferma</button>
+										        <a href="/register" class="btn btn-primary mt-3">Registrati</a>
+										    </div>
+										    <div class="social-container m-2 mt-3">
+										        <a href="/oauth2/authorization/facebook" class="social" id="facebook"><i class="fa fa-facebook"></i></a>
+										        <a href="/oauth2/authorization/google" class="social" id="google"><i class="fa fa-google"></i></a>
+										        <a href="/oauth2/authorization/github" class="social" id="github"><i class="fa fa-github"></i></a>
+										    </div>
+										</div>
+						            </form>
+						        </div>
+						    </div>							
+						 </div>
+				</div>
+
+				<br>
+			</div>
+		</section>
+		<div class="my-5"></div>
+		    
+		    <section class="another_section">
+		        <div class="container">
+		            <h2 class="text-center"></h2>
+		            <!-- Add your content here -->
+		        </div>
+		    </section>			
+
     <div><a href="/"><img src="/images/Foto-Merialdo.jpg" height="50%"/></a></div>
     <h1>Aggiungi una nuova Ricetta</h1>
     <form th:action="@{/admin/recipes}" method="POST" th:object="${recipe}">
@@ -24,17 +88,17 @@
         <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span>
       </div>
       
-      <div>
-        URL immagine: 
-        <span><input type="url" th:field="${recipe.images}" /></span>
-      </div>
-      <h1 th:each = "ingredient : ${recipe.ingredients}">Ingredienti</h1>
+	  <!--<div class="mb-3">
+	    <label for="formFile" class="form-label">Default file input example</label>
+	    <input class="form-control" type="file" id="formFile">
+	  </div>      <h1 th:each = "ingredient : ${recipe.ingredients}">Ingredienti</h1>
       <div>
       Nella prossima pagina puoi inserire gli ingredienti
-      </div>
+      </div-->
       <div>
         <span><button type="submit">Conferma</button></span>
       </div>
     </form>
+	<div th:replace="~{fragments :: Footer}"></div>
   </body>
 </html>

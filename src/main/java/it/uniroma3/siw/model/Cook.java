@@ -2,13 +2,19 @@ package it.uniroma3.siw.model;
 
 import java.time.LocalDate;
 import java.util.Objects;
+import java.util.Set;
 
-import jakarta.persistence.Column;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Past;
 
 @Entity
 public class Cook {
@@ -22,8 +28,16 @@ public class Cook {
 	@NotBlank
     private String surname;
     
-    @Column(columnDefinition = "DATE")
-    private java.time.LocalDate dateOfBirth;
+	@NotNull
+	@Past
+	@DateTimeFormat(pattern = "dd-MM-yyyy")
+	private LocalDate dateOfBirth;
+	
+	@OneToMany(mappedBy="cook")
+	private Set<Recipe> recipes;
+	
+	@OneToOne
+	private Image image;
     
 	public Long getId() {
 		return id;
@@ -63,5 +77,17 @@ public class Cook {
 			return false;
 		Cook other = (Cook) obj;
 		return Objects.equals(surname, other.surname) && Objects.equals(dateOfBirth, other.dateOfBirth);
+	}
+	public Set<Recipe> getRecipes() {
+		return recipes;
+	}
+	public void setRecipes(Set<Recipe> recipes) {
+		this.recipes = recipes;
+	}
+	public Image getImage() {
+		return image;
+	}
+	public void setImage(Image image) {
+		this.image = image;
 	}
 }

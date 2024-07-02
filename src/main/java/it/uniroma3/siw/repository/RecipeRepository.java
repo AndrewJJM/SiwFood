@@ -1,8 +1,10 @@
 package it.uniroma3.siw.repository;
 
+
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import it.uniroma3.siw.model.Cook;
 import it.uniroma3.siw.model.Recipe;
 
 /*Si interfaccia direttamente con il database per l'ENTITà SPECIFICA e ci fornisce operazioni CRUD (Create, Read, Update, Delete)
@@ -16,5 +18,10 @@ public interface RecipeRepository extends CrudRepository<Recipe, Long> {
 	
 	/*Possibile aggiungere metodi all'interfaccia SENZA DEFINIRLI, grazie alla
 	CONVENZIONE SEMANTICA: (operazione + By + attibuti (separati da And)*/
+	
+
+	public boolean existsByNameAndCook(String nome, Cook cook);
+
+	public Iterable<Recipe> findByCook(Cook cook);
 
 }

@@ -18,9 +18,9 @@
 	<div id="grid">
 	      <div class="container-fluid p-3 mb-4">
 	          <div class="row g-3" >
-	              <div class="col-lg-4 col-sm-6" th:each="cook : ${cooks}">
+	              <div class="col-lg-3 col-sm-6" th:each="cook : ${cooks}">
 	                  <a class="grid-box" th:href="@{'/cooks/' + ${cook.id}}">
-	                      <img class="img-fluid rounded-top-4" src="/images/baked-cake.png" alt="..." />
+	                      <img class="img-fluid rounded-top-4" th:src="@{'/uploadedImage/'+ ${cook.image.id}}" />
 	                      <div class="grid-caption mt-n2 rounded-bottom-4">
 	                        <div class="grid-caption-heading text-cream" th:text="${cook.name}">Ratatouille</div>
 	                        <div class="grid-caption-subheading text-muted" th:text="'('+${cook.surname}+')'">Remy Therat</div>

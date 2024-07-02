@@ -1,4 +1,5 @@
 package it.uniroma3.siw.model;
+import java.util.Objects;
 import java.util.Set;
 
 import jakarta.persistence.CascadeType;
@@ -8,39 +9,36 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "recipes")
 public class Recipe {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    
-    @NotBlank
-    private String name;
-    
-    private Set<String> images;
-    
-    @OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER) 
-    @JoinColumn(name="recipes_id") //per evitare la creazione di una tabella di join inutile
-    private Set<Ingredient> ingredients;
-    
-    @NotBlank
-    @Column(length=2000)
-    private String description;
-    
-    @ManyToOne //qui no cascade perché imponiamo scelta tra cuochi esistenti(Forse Cascade Refresh?)
-    private Cook cook;
-    
-    /********************************************************Methods******************************************************************/
+	@Id 
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
+	
+	@NotBlank
+	private String name;
+	
+	@Column(length = 2000)
+	private String description;
+	
+	//TODO: manage more than one image
+	@OneToOne
+	private Image image;
 
-    
+	@ManyToOne
+	@NotNull
+	private Cook cook;
+	
+	@OneToMany(mappedBy="recipe", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private Set<RecipeIngredient> recipeIngredients;
+
 	public Long getId() {
 		return id;
 	}
@@ -53,32 +51,24 @@ public class Recipe {
 		return name;
 	}
 
-	public void setName(String nome) {
-		this.name = nome;
-	}
-
-	public Set<String> getImages() {
-		return images;
-	}
-
-	public void setImages(Set<String> immagini) {
-		this.images = immagini;
-	}
-
-	public Set<Ingredient> getIngredients() {
-		return ingredients;
-	}
-
-	public void setIngredients(Set<Ingredient> ingredienti) {
-		this.ingredients = ingredienti;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getDescription() {
 		return description;
 	}
 
-	public void setDescription(String descrizione) {
-		this.description = descrizione;
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public Image getImage() {
+		return image;
+	}
+
+	public void setImage(Image image) {
+		this.image = image;
 	}
 
 	public Cook getCook() {
@@ -88,5 +78,30 @@ public class Recipe {
 	public void setCook(Cook cook) {
 		this.cook = cook;
 	}
-    
+
+	public Set<RecipeIngredient> getRecipeIngredients() {
+		return recipeIngredients;
+	}
+
+	public void setRecipeIngredients(Set<RecipeIngredient> recipeIngredients) {
+		this.recipeIngredients = recipeIngredients;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(description, recipeIngredients);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Recipe other = (Recipe) obj;
+		return Objects.equals(description, other.description)
+				&& Objects.equals(recipeIngredients, other.recipeIngredients);
+	}
 }
