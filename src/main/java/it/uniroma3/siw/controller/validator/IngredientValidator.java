@@ -8,6 +8,7 @@ import org.springframework.validation.Validator;
 import it.uniroma3.siw.model.Ingredient;
 import it.uniroma3.siw.repository.IngredientRepository;
 
+@Component
 public class IngredientValidator implements Validator{
 	
 	@Autowired

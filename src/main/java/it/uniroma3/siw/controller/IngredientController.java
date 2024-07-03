@@ -18,7 +18,6 @@ import it.uniroma3.siw.service.RecipeService;
 @Controller
 public class IngredientController {
 	@Autowired IngredientService ingredientService;
-	@Autowired IngredientValidator ingredientValidator;
 	@Autowired RecipeService recipeservice;
 	
 	@GetMapping("/ingredients")
@@ -53,16 +52,16 @@ public class IngredientController {
 		return "/admin/adminIngredients.html";
 	}
 	
-	@PostMapping("/admin/newIngredient")
+	/*@PostMapping("/admin/newIngredient")
 	public String adminNewIngredient(@PathVariable("id") Long id, @ModelAttribute("ingredient") Ingredient ingredient, BindingResult bindingResult, Model model) {
 		this.ingredientValidator.validate(ingredient, bindingResult);
 		if (!bindingResult.hasErrors()) { 
 			this.ingredientService.save(ingredient);
 			}
 		return "redirect:/admin/addIngredients/" + id; //forzo il refresh della pagina
-	}
+	}*/
 	
-	@PostMapping("/admin/updateIngredients/{id}")
+	@PostMapping("/admin/updateIngredient/{id}")
 	public String adminUpdateIngredient(@PathVariable("id") Long id, @ModelAttribute("ingredient") Ingredient ingredient, BindingResult bindingResult, Model model) {
 		if (!bindingResult.hasErrors()) { 
 			this.ingredientService.save(ingredient);
