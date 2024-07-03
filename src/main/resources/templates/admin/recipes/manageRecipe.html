@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	
+	<head>
+		<title>Manage Recipes</title>
+		<div th:replace="~{fragments :: Stylesheet}"></div>
+	</head>
+	
+	<body>
+		<div th:if="${role!=null && role=='ADMIN'}"><div th:replace="~{fragments :: Navbar-admin}"></div></div>
+		<div th:if="${role!=null && role=='DEFAULT'}"><div th:replace="~{fragments :: Navbar-logged}"></div></div>
+		<div th:if="${#authorization.expression('isAnonymous()')}"><div th:replace="~{fragments :: Navbar}"></div></div>
+
+    <div><a href="/">Home</a></div>
+		<h1>Gestisci ricette</h1>
+		<div th:if="${recipes.isEmpty()}">Non ci sono ricette nel sistema</div>
+		<ul>
+        <li th:each="recipe : ${recipes}">
+        	<a th:text="${recipe.name}+' '+${recipe.cook}"></a>
+			<a th:href="@{'/admin/removeRecipe/' + ${recipe.id}}">(Rimuovi)</a>
+        </li>
+        </ul>
+		<div th:replace="~{fragments :: Footer}"></div>
+	    </body>
+</html>

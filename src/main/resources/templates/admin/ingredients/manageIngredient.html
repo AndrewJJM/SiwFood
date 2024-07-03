@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	
+	<head>
+		<title>Manage Ingredients</title>
+		<div th:replace="~{fragments :: Stylesheet}"></div>
+	</head>
+	
+	<body>
+		<div th:if="${role!=null && role=='ADMIN'}"><div th:replace="~{fragments :: Navbar-admin}"></div></div>
+		<div th:if="${role!=null && role=='DEFAULT'}"><div th:replace="~{fragments :: Navbar-logged}"></div></div>
+		<div th:if="${#authorization.expression('isAnonymous()')}"><div th:replace="~{fragments :: Navbar}"></div></div>
+
+    <div><a href="/">Home</a></div>
+		<h1>Gestisci ingredienti</h1>
+		<div th:if="${ingredients.isEmpty()}">Non ci sono ingredienti nel sistema</div>
+		<ul>
+        <li th:each="ingredient : ${ingredients}">
+        	<a th:text="${ingredient.name}+' '+${ingredient.quantity}"></a>
+			<a th:href="@{'/admin/revoeIngredient/' + ${ingredient.id}}">(Rimuovi)</a>
+        </li>
+        </ul>
+		<div th:replace="~{fragments :: Footer}"></div>
+	    </body>
+</html>
