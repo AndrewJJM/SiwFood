@@ -24,5 +24,4 @@ public class IngredientService {
 		ingredientRepository.save(ingredient);
 	}
 
-
 }

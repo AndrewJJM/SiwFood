@@ -77,7 +77,7 @@ public class RecipeController {
 			recipe.setImage(img);
 			this.recipeService.save(recipe); 
 			model.addAttribute("recipe", recipe);
-			return "redirect:recipes/"+recipe.getId();
+			return "redirect:/admin/addIngredients/"+recipe.getId();
 		}
 	}
 

@@ -16,7 +16,7 @@ import it.uniroma3.siw.service.RecipeService;
 
 
 @Controller
-public class IngredientController {
+public class RecipeIngredientController {
 	@Autowired IngredientService ingredientService;
 	@Autowired IngredientValidator ingredientValidator;
 	@Autowired RecipeService recipeservice;

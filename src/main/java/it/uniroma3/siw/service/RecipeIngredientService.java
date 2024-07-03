@@ -37,6 +37,5 @@ public class RecipeIngredientService {
 	        this.recipeIngredientRepository.save(recipeIngredient);  // Save to database
 	    }
 	}
-
-
+	
 }
