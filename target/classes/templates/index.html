@@ -17,21 +17,17 @@
 	<!-- Modale di benvenuto -->
 	<div class="modal fade" id="welcomeModal" tabindex="-1" aria-labelledby="welcomeModalLabel" aria-hidden="true">
 	    <div class="modal-dialog">
-	        <div class="modal-content">
+	        <div class="modal-content bg-orange">
 	            <div class="modal-header">
-	                <h5 class="modal-title" id="welcomeModalLabel">Accesso eseguito</h5>
-	                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+	                <h5 class="modal-title text-cream fw-semibold" id="welcomeModalLabel">Accesso eseguito</h5>
+	                <button type="button" class="btn-close bg-cream" data-bs-dismiss="modal" aria-label="Close"></button>
 	            </div>
-	            <div class="modal-body" th:if="${role!=null && role=='ADMIN'}">
+	            <h2 class="modal-body fw-bold text-cream my-5" align="center" th:if="${role!=null && role=='ADMIN'}">
 	                Bentornato Amministratore!
-	            </div>
-				<div class="modal-body" th:if="${role!=null && role=='DEFAULT'}">
+	            </h2>
+				<div class="modal-body fw-bold text-cream my-5" th:if="${role!=null && role=='DEFAULT'}">
 				    Bentornato Utente!
 				</div>
-
-	            <div class="modal-footer">
-	                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
-	            </div>
 	        </div>
 	    </div>
 	</div>

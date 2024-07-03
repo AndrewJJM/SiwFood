@@ -35,5 +35,4 @@ public class IngredientController {
 		  return "manageIngredients.html";
 	  }
 	}
-
 }

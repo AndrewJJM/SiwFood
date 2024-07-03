@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import it.uniroma3.siw.controller.validator.CredentialsValidator;
 import it.uniroma3.siw.controller.validator.UserValidator;
+import it.uniroma3.siw.model.Cook;
 import it.uniroma3.siw.model.Credentials;
 import it.uniroma3.siw.model.User;
 import it.uniroma3.siw.service.CredentialsService;
@@ -39,6 +40,7 @@ public class AuthenticationController {
 	public String showRegisterForm (Model model) {
 		model.addAttribute("user", new User());
 		model.addAttribute("credentials", new Credentials());
+		model.addAttribute("cook", new Cook());
 		return "formRegisterUser";
 	}
 	
